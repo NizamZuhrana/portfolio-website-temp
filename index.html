@@ -38,9 +38,14 @@
       content="black-translucent"
     />
     <!-- Custom Browser Color End -->
+    <style>
+      .notranslate {
+        unicode-bidi: plaintext;
+      }
+    </style>
   </head>
 
-  <body>
+  <body class="notranslate">
     <!-- Loader Start -->
     <div id="loader" class="loader">
       <div id="loaderContent" class="loader__content">
@@ -415,7 +420,7 @@
                     <p class="small">
                       ● Browse available sports fields. <br />● View detailed
                       information about each field, including photos, location,
-                      price, and facilities. <br />● Book a field online.
+                      price, and facilities
                     </p>
                   </figcaption>
                 </figure>
@@ -454,9 +459,7 @@
                     <p class="small">
                       This project features a clean and responsive website for
                       Basement Coffee, focusing on displaying their coffee
-                      products. The site showcases an interactive product
-                      catalog with detailed descriptions and images, offering a
-                      smooth browsing experience across all devices
+                      products. 
                     </p>
                   </figcaption>
                 </figure>
@@ -1516,6 +1519,13 @@
         const delta = max - min;
         return (direction = 1) => (min + delta * Math.random()) * direction;
       }
+      document.querySelectorAll("*").forEach((el) => {
+        if (/[A-Za-z]/.test(el.textContent)) {
+          // Cek apakah ada teks bahasa Inggris
+          el.setAttribute("translate", "no");
+          el.classList.add("notranslate");
+        }
+      });
     </script>
     <script src="js/app.js"></script>
     <script src="js/gallery-init.js"></script>
